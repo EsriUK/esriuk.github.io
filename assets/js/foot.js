@@ -3,10 +3,11 @@
         var numberOfProjects = config.data.projects.categories[i].maxRepos;
         if ((numberOfProjects && numberOfProjects > 1) || config.data.projects.categories[i].projects[0].featured !== true) {
             var targetURL = [
-                "https://api.github.com/search/repositories?q=",    // Searching GitHub API for repositories
-                "sort:updated",                                     // Ordered by most recently updated
-                "org:esriuk",                                       // Organisation 
-                "topic:" + config.data.projects.categories[i].topic // Filter to current section
+                "https://api.github.com/search/repositories?q=",     // Searching GitHub API for repositories
+                "sort:updated",                                      // Ordered by most recently updated
+                "org:esriuk",                                        // Organisation 
+                "topic:" + config.data.projects.categories[i].topic, // Filter to current section
+                "archived:false",                                    // Exclude archived repositories
                 ].join("+")
                 + "&per_page=" + numberOfProjects;                  // Gets one more result than wanted, but one might match pre-configured one
             
