@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script>
+            var config = {
+                title: "GitHub",
+                organisation: "Esri UK",
+                tagline: "Tools, apps, and more",
+                description: "Open source tools, apps, and more from Esri UK",
+                url: "https://github.com/esriuk",
+                org: "esriuk",
+                twitter: "@esriUKTwitter",
+                data: {
+                    projects: {
+                        categories: [{
+                            title: "Localised Tools",
+                            description: "These are a set of open source apps, tools and scripts for use by the UK community",
+                            url: "https://github.com/esriuk?q=topic:esriuk-localisation",
+                            topic: "esriuk-localisation",
+                            anchor: "localised-tools",
+                            color: "purple",
+                            icon: "/assets/svg/projects/apps-48.svg",
+                            maxRepos: 5,
+                            projects: [{
+                                title: "mapstyler",
+                                repo: "esriuk/mapstyler",
+                                description: "Style an Esri vector tile layer style using an image or colour palette.",
+                                image: "/assets/img/projects/mapstyler.jpg",
+                                url: "https://github.com/esriuk/mapstyler",
+                                displayLang: "JavaScript",
+                                searchLang: "javascript",
+                                featured: true
+                            }]
+                        },
+                        {
+                            title: "Presentation Code/Apps",
+                            url: "https://github.com/esriuk?q=topic:esriuk-presentation",
+                            topic: "esriuk-presentation",
+                            anchor: "presentations",
+                            color: "dark-red",
+                            icon: "/assets/svg/projects/presentation-48.svg",
+                            maxRepos: 1,
+                            projects: [{
+                                title: "Presentations",
+                                description: "Presentations from conferences and events.",
+                                image: "/assets/img/projects/presentations.png",
+                                url: "https://github.com/esriuk/presentations",
+                                displayLang: "&nbsp;",
+                                searchLang: null,
+                                featured: true
+                            }]
+                        },
+                        {
+                            title: "Innovation Apps",
+                            url: "https://github.com/esriuk?q=topic:esriuk-innovation",
+                            topic: "esriuk-innovation",
+                            anchor: "innovation-apps",
+                            color: "green",
+                            icon: "/assets/svg/projects/science-48.svg",
+                            maxRepos: 5,
+                            projects: [{
+                                title: "esri-polymer",
+                                repo: "esriuk/esri-polymer",
+                                description: "A set of Esri web components built using the Polymer library.",
+                                image: "/assets/img/projects/innovation.png",
+                                url: "https://github.com/EsriUK/esri-polymer",
+                                displayLang: "HTML",
+                                searchLang: "html",
+                                featured: true
+                            }]
+                        }]
+                    }
+                }
+            }
+
+            function template(thenTemplate = "") {
+                templateIfElse(true, thenTemplate);
+            }
+
+            function templateIfElse(condition = true, thenTemplate = "", elseTemplate = "") {
+                var scriptTag = document.querySelector("script#template");
+                if (condition) {
+                    scriptTag.outerHTML = thenTemplate;
+                } else {
+                    scriptTag.outerHTML = elseTemplate;
+                }
+            }
+        </script>
+        <style>
+            temp-late { display: none; }
+        </style>
+
+        <meta charset="utf-8">
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+        <link rel="icon" href="/assets/fav/favicon.svg" type="image/svg+xml">
+        <link rel="icon" type="image/png" href="/assets/fav/favicon.png">
+
+        <!-- Title -->
+        <script id="template">template(`
+        <title>${config.title ? config.organisation + " " + config.title +" | "+ config.tagline : "Esri UK Open Source"}</title>
+        `,);
+        </script>
+
+        <!-- Meta -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script id="template">templateIfElse(config.description, `
+        <!-- Description -->
+        <meta name="description" content="${config.description}">
+
+        <!-- Twitter Card-->
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="${config.title && config.organisation ? config.organisation + " " + config.title +" | "+ config.tagline : "Esri UK GitHub"}">
+        <meta name="twitter:site" content="${config.twitter ? config.twitter : "@EsriUK"}">
+        <meta name="twitter:description" content="${config.description}">
+
+        <!-- Facebook Open Graph -->
+        <meta name="og:title" content="${config.title && config.organisation ? config.organisation + " " + config.title +" | "+ config.tagline : "Esri UK GitHub"}">
+        <meta property="og:description" content="${config.description}" />
+        <meta property="og:site_name" content="${config.title ? config.title : "Esri UK GitHub"}" />
+        <meta property="og:url" content="${config.url ? config.url : "https://github.com/esriuk"}" />
+        `, "");
+        </script>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://webapps-cdn.esri.com/CDN/jslibs/calcite/1.0.0-rc.9/css/calcite-web.min.css">
+        <link rel="stylesheet" href="/assets/css/head.css">
+
+        <!-- JS -->
+        <!-- <script src="/assets/js/head.js"></script> -->
+
+        <!-- Loads Esri UK Global Navigation from AEM -->
+        <link rel="stylesheet" href="//webapps-cdn.esri.com/CDN/components/global-nav/css/gn.css" />
+        <script type="text/javascript">
+            window.gnav_baseUrl = "https://www.esriuk.com";
+            window.gnav_jsonPath = "https://assets.esri.com/content/experience-fragments/distributor-sites/esriuk-com/en-gb/global-navigation-config/flyout.25.json";
+        </script>
+        <script src="//webapps-cdn.esri.com/CDN/components/global-nav/js/gn.js"></script>
+    </head>
+
+    <body>
+
+        <div class="wrapper">
+            <div id="skip-to-content">
+                <header class="gh-banner">
+                    <script id="template">template(`
+                    <h1>${config.title && config.organisation ? config.organisation + " " + config.title : "Esri UK GitHub"}</h1>
+                    <p>${config.description ? config.description : "Explore our geospatial projects"}</p>
+                    <a class="btn gh-banner-cta" href="${config.url ? config.url : "https://github.com/esriuk"}">View repositories <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" class="svg-icon"><path d="M7 4h5l12 12-12 12H7l12-12L7 4z"/></svg></a>
+                    `,);
+                    </script>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" class="code-icon">
+                        <defs>
+                            <style>
+                                @supports not (d: none) {
+                                    svg.code-icon .bracket.right  { --transform: translateX(88px) scaleX(-1); }
+                                    svg.code-icon .bracket.top    { transform-origin: 20px 63px; transform: var(--transform, ) rotate(-52deg) scaleX(1.2); }
+                                    svg.code-icon .bracket.bottom { transform-origin: 20px 71px; transform: var(--transform, ) rotate( 52deg) scaleX(1.2); }
+                                    svg.code-icon .slash          { transform-origin: 61.5px center; transform: rotate(-69.5deg) scaleX(2.3) translateX(-3.5px); }
+                                }
+                                @supports (d: none) {
+                                    svg.code-icon {
+                                        overflow: hidden;
+                                        --slide-in-duration: 1;
+                                        animation: calc(var(--slide-in-duration) * 1s) in-from-side cubic-bezier(0.85, 0, 0.27, 1.15) both;
+                                    }
+                                    @keyframes in-from-side {
+                                        0%   { transform: translateX(100vw); }
+                                        100% { transform: translateX(0);     }
+                                    }
+                    
+                                    /* Brackets ------------------------------------- */
+                                    svg.code-icon path.bracket {
+                                        --transform: ;
+                                        --angle: -52deg;
+                                        transform-origin: 20px 63px;
+                                        --animation-path: bracket-path-top;
+                                        --animation-duration: .6s;
+                                        --animation-delay: calc((var(--slide-in-duration) + 0) * 1s);
+                                        --animation-fill-mode: both;
+                                        animation: 
+                                            bracket-rotate var(--animation-duration) var(--animation-delay) cubic-bezier(0.68, 0, 0.27, 1.55) var(--animation-fill-mode),
+                                            var(--animation-path) var(--animation-duration) var(--animation-delay) cubic-bezier(0.65, 0, 0.27, 1.55) var(--animation-fill-mode);
+                                    }
+                                    svg.code-icon path.bracket.right {
+                                        --transform: translateX(88px) scaleX(-1);
+                                        transform: var(--transform);
+                                    }
+                                    svg.code-icon path.bracket.bottom {
+                                        transform-origin: 20px 71px;
+                                        --angle: 52deg;
+                                        --animation-path: bracket-path-bottom;
+                                    }
+                                    @keyframes bracket-rotate {
+                                        0% { transform: var(--transform); }
+                                        60% { transform: var(--transform) rotate(var(--angle)) scaleX(1.2); }
+                                        100% { transform: var(--transform) rotate(var(--angle)) scaleX(1.2); }
+                                    }
+                                    @keyframes bracket-path-top {
+                                        0% {
+                                            d: path("\
+                                                M15 67\
+                                                L15 61.75\
+                                                L45 61.75\
+                                                L45 67\
+                                                L45 72.25\
+                                                L20.25 72.25\
+                                            Z");
+                                        }
+                                        50% {
+                                            d: path("\
+                                                M15 67\
+                                                L15 61.75\
+                                                L45 61.75\
+                                                L45 72.25\
+                                                L20.25 72.25\
+                                            Z");
+                                        }
+                                        100% {
+                                            d: path("\
+                                                M 15 67\
+                                                L 15 61.75\
+                                                L 38 61.75\
+                                                L 45 72.25\
+                                                L 20.25 72.25\
+                                            Z");
+                                        }
+                                    }
+                                    @keyframes bracket-path-bottom {
+                                        0% {
+                                            d: path("\
+                                                M15 67\
+                                                L20.25 61.75\
+                                                L45 61.75\
+                                                L45 67\
+                                                L45 72.25\
+                                                L15 72.25\
+                                            z");
+                                        }
+                                        50% {
+                                            d: path("\
+                                                M15 67\
+                                                L20.25 61.75\
+                                                L45 61.75\
+                                                L45 72.25\
+                                                L15 72.25\
+                                            Z");
+                                        }
+                                        100% {
+                                            d: path("\
+                                                M15 67\
+                                                L20.25 61.75\
+                                                L45 61.75\
+                                                L38 72.25\
+                                                L15 72.25\
+                                            Z");
+                                        }
+                                    }
+                                    
+                                    /* Slash ---------------------------------------- */
+                                    
+                                    svg.code-icon path.slash {
+                                        --path: "\
+                                            M40 67\
+                                            L45 61.75\
+                                            L83 61.75\
+                                            L88 67\
+                                            L83 72.25\
+                                            L50.25 72.25\
+                                            L45 72.25\
+                                        Z";
+                                        d: path(var(--path));
+                                        transform-origin: 61.5px center;
+                                        --transform: ;
+                                        --angle: -69.5deg;
+                                        --animation-duration: 1s;
+                                        --animation-delay: calc((var(--slide-in-duration) + .3) * 1s);
+                                        --animation-fill-mode: both;
+                                        animation: 
+                                            slash-rotate var(--animation-duration) var(--animation-delay) cubic-bezier(0.68, 0, 0.27, 1.55) var(--animation-fill-mode),
+                                            slash-path calc(1.2 * var(--animation-duration)) var(--animation-delay) cubic-bezier(0.65, 0, 0.27, 1) var(--animation-fill-mode);
+                                    }
+                                    
+                                    @keyframes slash-rotate {
+                                        0% { transform: var(--transform); }
+                                        50% { transform: var(--transform) rotate(var(--angle)); }
+                                        100% { transform: var(--transform) rotate(var(--angle)) scaleX(2.3) translateX(-3.5px); }
+                                    }
+                                    @keyframes slash-path {
+                                        40% {
+                                            d: path("\
+                                                M45 72.25\
+                                                L45 61.75\
+                                                L83 61.75\
+                                                L83 64.75\
+                                                L83 72.25\
+                                                L50.25 72.25\
+                                                L45 72.25\
+                                            Z");
+                                        }
+                                        80% {
+                                            d: path("\
+                                                M45 72.25\
+                                                L45 61.75\
+                                                L83 61.75\
+                                                L83 64.75\
+                                                L83 72.25\
+                                                L50.25 72.25\
+                                                L45 72.25\
+                                            Z");
+                                        }
+                                        100% {
+                                            d: path("\
+                                                M50.25 72.25\
+                                                L45 61.75\
+                                                L81.3 61.75\
+                                                L81.3 61.75\
+                                                L83 72.25\
+                                                L50.25 72.25\
+                                                L50.25 72.25\
+                                            Z");
+                                        }
+                                    }
+                                }
+                            </style>
+                        </defs>
+                        <path xmlns="http://www.w3.org/2000/svg" class="bracket left top" d="
+                            M 15 67
+                            L 15 61.75
+                            L 38 61.75
+                            L 45 72.25
+                            L 20.25 72.25
+                        Z" />
+                        <path xmlns="http://www.w3.org/2000/svg" class="bracket left bottom" d="
+                            M 15 67
+                            L 20.25 61.75
+                            L 45 61.75
+                            L 38 72.25
+                            L 15 72.25
+                        Z" />
+                        <path xmlns="http://www.w3.org/2000/svg" class="slash" d="
+                            M 50.25 72.25
+                            L 45 61.75
+                            L 81.3 61.75
+                            L 81.3 61.75
+                            L 83 72.25
+                            L 50.25 72.25
+                            L 50.25 72.25
+                        Z" />
+                        <path xmlns="http://www.w3.org/2000/svg" class="bracket right top" d="
+                            M 15 67
+                            L 15 61.75
+                            L 38 61.75
+                            L 45 72.25
+                            L 20.25 72.25
+                        Z" />
+                        <path xmlns="http://www.w3.org/2000/svg" class="bracket right bottom" d="
+                            M 15 67
+                            L 20.25 61.75
+                            L 45 61.75
+                            L 38 72.25
+                            L 15 72.25
+                        Z" />
+                    </svg>
+                </header>
+
+                <div class="gh-search">
+                    <form id="search" method="GET" action="https://github.com/orgs/esriuk/repositories?q=" class="github-search">
+                        <label>
+                            <input type="search" id="github-search-input" class="search-module--search-overlay-input--2BGmw" role="search" name="q" placeholder="Search Esri UK's GitHub repositories" aria-label="Search Esri UK's GitHub repositories">
+                        </label>
+                        <input type="hidden" id="github-search-hiddent" name="p" value="">
+                        <button id="github-search-submit" type="submit" class="github-search-submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="search-24"><path d="M21.842 21.134l-6.843-6.843a7.317 7.317 0 1 0-.708.708l6.843 6.843a.5.5 0 1 0 .708-.708zM9.5 15.8a6.3 6.3 0 1 1 6.3-6.3 6.307 6.307 0 0 1-6.3 6.3z"/><path fill="none" d="M0 0h24v24H0z"/></svg>
+                            <span class="visually-hidden">Search Esri UK's GitHub repositories</span>
+                        </button>
+                    </form>
+                </div>
+
+                <div id="project-categories">
+                    <nav class="anchor-navigation" style="grid-row-end: 0">
+                        <script id="template">
+                            document.querySelector(".anchor-navigation").setAttribute("style", "grid-row-end: " + (config.data.projects.categories.length + 1) + ";")
+                            document.querySelector("script#template").outerHTML = "";
+                        </script>
+                        <ul class="anchor-nav-list">
+                            <script id="template">
+                            var content = "";
+                            for (category in config.data.projects.categories) { category = config.data.projects.categories[category];
+                                content += `
+                            <li class="anchor-nav-item">
+                                <a href="#${category.anchor}" style="--icon: url(${category.icon})">${category.title}</a>
+                            </li>
+                                `;
+                            }
+
+                            document.querySelector("script#template").parentElement.setAttribute("style", 
+                                "--height: " + 
+                                ((58 * config.data.projects.categories.length) + (20 * (config.data.projects.categories.length + 1))) 
+                                + "px");
+                            document.querySelector("script#template").outerHTML = content;
+                            </script>
+                        </ul>
+                    </nav>
+
+                    <script id="template">
+                    var content = "", count = 0;
+                    for (category in config.data.projects.categories) { category = config.data.projects.categories[category]; count++;
+                        content += `
+                    <section id="${category.anchor}" class="project-category padding-leader-3 padding-trailer-3" style="grid-row-start: ${count}">
+                        <header>
+                            <img class="category-icon" src="${category.icon}"></img>
+                            <h2>${category.title}</h2>
+                            ${category.description ? `<p>${category.description}</p>` : "" }
+                        </header>
+                        <div class="guide-cards">
+                            <div class="guide-card guide-card-large">
+                                <img src="${category.projects[0].image}" class="guide-card-image" alt="${category.projects[0].imageAlt}" />
+                                <div class="guide-card-content">
+                                    ${category.projects[0].displayLang ? `
+                                        <span class="guide-card-subtitle guide-card-language"><a class="guide-card-language-link" href="https://github.com/orgs/${config.org ? config.org : "esriuk"}/repositories?language=${category.projects[0].searchLang}">${category.projects[0].displayLang}</a></span>
+                                    ` : ""}
+                                    <h2 class="guide-card-title">${category.projects[0].title}</h2>
+                                    <p class="guide-card-text">${category.projects[0].description}</p>
+                                    <div class="guide-card-cta">
+                                        <a href="${category.projects[0].url}" class="btn guide-card-button">Learn more</a>
+                                    </div>
+                                </div>
+                            </div>`;
+                            
+                        for (var i=1; i<category.projects.length; i++) { 
+                            var project = category.projects[i];
+                            content += `
+                            <div class="guide-card" data-repo="${project.repo}">
+                                ${project.stars && project.stars >= '1' ? `
+                                <span class="guide-card-stars"><em>${project.stars}</em></span>
+                                ` : ""}
+                                ${project.displayLang ? `
+                                <span class="guide-card-subtitle guide-card-language"><a class="guide-card-language-link" href="https://github.com/orgs/${config.org ? config.org : "esriuk"}/repositories?language=${project.searchLang}">${project.displayLang}</a></span>
+                                ` : `<div></div>`}
+                                <h2 class="guide-card-title">${project.title}</h2>
+                                <p class="guide-card-text">${project.description}</p>
+                                <div class="guide-card-cta">
+                                    <a href="${project.url}" class="btn guide-card-button">Learn more</a>
+                                </div>
+                            </div>
+                            `;
+                        }
+                        
+                        content += `    
+                        </div>
+                        <div class="project-category-cta">
+                            <a href="${category.url}" class="btn btn-clear project-category-button" alt="View All">View All <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2 8h10.26l-1.585-1.585.707-.707 2.81 2.81-2.81 2.808-.707-.707L12.295 9H2z"/></svg></a>
+                        </div>
+                    </section>
+                        `;
+                    }
+                    document.querySelector("script#template").outerHTML = content;
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <!-- Foot JavaScript -->
+        <script src="/assets/js/foot.js"></script>
+        
+        <!-- Foot CSS -->
+        <!-- <link rel="stylesheet" href="/assets/css/foot.css"> -->
+    </body>
+</html>

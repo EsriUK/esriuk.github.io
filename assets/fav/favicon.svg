@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" class="code-icon">
+    <style>
+        :root {
+            background: #ffffff;
+        }
+        .bracket.right  { --transform: translateX(88px) scaleX(-1); }
+        .bracket.top    { transform-origin: 20px 63px; transform: var(--transform, ) rotate(-52deg) scaleX(1.2); }
+        .bracket.bottom { transform-origin: 20px 71px; transform: var(--transform, ) rotate( 52deg) scaleX(1.2); }
+        .slash          { transform-origin: 61.5px center; transform: rotate(-69.5deg) scaleX(2.3) translateX(-3.5px); }
+        path { fill: #0d2c4e; }
+        @media (prefers-color-scheme: dark) {
+            path { fill: #ffffff; }
+        }
+    </style>
+    <g>
+        <path xmlns="http://www.w3.org/2000/svg" class="bracket left top" d="
+            M 15 67
+            L 15 61.75
+            L 38 61.75
+            L 45 72.25
+            L 20.25 72.25
+        Z" />
+        <path xmlns="http://www.w3.org/2000/svg" class="bracket left bottom" d="
+            M 15 67
+            L 20.25 61.75
+            L 45 61.75
+            L 38 72.25
+            L 15 72.25
+        Z" />
+        <path xmlns="http://www.w3.org/2000/svg" class="slash" d="
+            M 50.25 72.25
+            L 45 61.75
+            L 81.3 61.75
+            L 81.3 61.75
+            L 83 72.25
+            L 50.25 72.25
+            L 50.25 72.25
+        Z" />
+        <path xmlns="http://www.w3.org/2000/svg" class="bracket right top" d="
+            M 15 67
+            L 15 61.75
+            L 38 61.75
+            L 45 72.25
+            L 20.25 72.25
+        Z" />
+        <path xmlns="http://www.w3.org/2000/svg" class="bracket right bottom" d="
+            M 15 67
+            L 20.25 61.75
+            L 45 61.75
+            L 38 72.25
+            L 15 72.25
+        Z" />
+    </g>
+</svg>
