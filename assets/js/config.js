@@ -18,7 +18,7 @@ var config = {
                     title: "mapstyler",
                     repo: "esriuk/mapstyler",
                     description: "Style an Esri vector tile layer style using an image or colour palette.",
-                    image: "https://www.esri.com/arcgis-blog/wp-content/uploads/2018/08/mapstyler_colour.gif",
+                    image: "/assets/img/projects/mapstyler.jpg",
                     url: "https://github.com/esriuk/mapstyler",
                     displayLang: "JavaScript",
                     searchLang: "javascript",
