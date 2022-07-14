@@ -1,29 +1,30 @@
 (function() {
     for (var i=0, l=config.data.projects.categories.length; i<l; i++) { (function(i) {
-        var numberOfProjects = config.data.projects.categories[i].maxRepos;
-        if ((numberOfProjects && numberOfProjects > 1) || config.data.projects.categories[i].projects[0].featured !== true) {
+        var category = config.data.projects.categories[i];
+        var numberOfProjects = category.maxRepos;
+        if ((numberOfProjects && numberOfProjects > 1)) {
             var targetURL = [
-                "https://api.github.com/search/repositories?q=",     // Searching GitHub API for repositories
-                "sort:updated",                                      // Ordered by most recently updated
-                "org:esriuk",                                        // Organisation 
-                "topic:" + config.data.projects.categories[i].topic, // Filter to current section
-                "archived:false",                                    // Exclude archived repositories
+                "https://api.github.com/search/repositories?q=",   // Searching GitHub API for repositories
+                "sort:updated",                                    // Ordered by most recently updated
+                "org:" + config.org,                               // Organisation 
+                (category.topic ? "topic:" + category.topic : ""), // Filter to current section
+                "archived:false",                                  // Exclude archived repositories
                 ].join("+")
-                + "&per_page=" + numberOfProjects;                  // Gets one more result than wanted, but one might match pre-configured one
+                + "&per_page=" + numberOfProjects;                 // Gets one more result than wanted, but one might match pre-configured one
             
             controlledCacheFetchJSON(targetURL, 60000, function(data) {
                 // Remove all but the first pre-configured item
-                config.data.projects.categories[i].projects.splice(1);
+                category.projects.splice(1);
         
                 // Loop through returned item and append if not matching first pre-configured item
                 for (var j=0, m=data.items.length, d=0; j<m; j++) {
-                    for (var k=0, n=config.data.projects.categories[i].projects.length, alreadyThere=false; k<n; k++) {
-                        if (config.data.projects.categories[i].projects[k].repo.toLowerCase() === data.items[j]["full_name"].toLowerCase()) {
+                    for (var k=0, n=category.projects.length, alreadyThere=false; k<n; k++) {
+                        if (category.projects[k].repo.toLowerCase() === data.items[j]["full_name"].toLowerCase()) {
                             alreadyThere = true;
                         }
                     }
                     if (!alreadyThere) {
-                        config.data.projects.categories[i].projects.push({
+                        category.projects.push({
                             "title" : data.items[j]["name"],
                             "repo" : data.items[j]["full_name"],
                             "description" : data.items[j]["description"],
@@ -37,12 +38,12 @@
                     if (d >= (numberOfProjects - 1)) { j = m }
                 }
 
-                var guideCards = document.querySelector("#"+config.data.projects.categories[i].anchor+" .guide-cards");
+                var guideCards = document.querySelector("#"+category.anchor+" .guide-cards");
                 if (guideCards) {
                     var largeCard = guideCards.querySelector(".guide-card-large");
                     var content = largeCard ? largeCard.outerHTML : "";
-                    for (var h=1, n=config.data.projects.categories[i].projects.length; h<n; h++) { 
-                        var project = config.data.projects.categories[i].projects[h];
+                    for (var h=1, n=category.projects.length; h<n; h++) { 
+                        var project = category.projects[h];
                         content += `
                         <div class="guide-card" data-repo="${project.repo}">
                             <span class="guide-card-stars">${project.stars && project.stars >= 1 ? '<em>' + project.stars + '</em>' : ''}</span>
@@ -110,8 +111,6 @@
             '}\n\n';
         });
     }
-
-
 
     function getOrMakeStyleSheet(id) {
         var styleSheet = document.querySelector("style#"+id);
