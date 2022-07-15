@@ -3,7 +3,7 @@
     <head>
         <script src="/assets/js/config.js"></script>
         <script>
-            if (typeof config === "undefined") {
+            if (typeof config === "undefined" || !config.data || !config.data.projects || !config.data.projects.categories) {
                 /* Fall back to displaying single section of repositories. Exclude this repo by identifying as unfeatured */
                 config = {
                     data: {
@@ -50,7 +50,7 @@
         <!-- Title -->
         <script id="template">template(`
         <title>${config.title + (config.tagline ? " | "+ config.tagline : "")}</title>
-        `,);
+        `);
         </script>
 
         <!-- Meta -->
@@ -77,17 +77,10 @@
         <!-- CSS -->
         <link rel="stylesheet" href="https://webapps-cdn.esri.com/CDN/jslibs/calcite/1.0.0-rc.9/css/calcite-web.min.css">
         <link rel="stylesheet" href="/assets/css/head.css">
+        <link rel="stylesheet" href="/assets/css/global-nav-lite.css">
 
         <!-- JS -->
         <!-- <script src="/assets/js/head.js"></script> -->
-
-        <!-- Loads Esri UK Global Navigation from AEM -->
-<!--         <link rel="stylesheet" href="//webapps-cdn.esri.com/CDN/components/global-nav/css/gn.css" />
-        <script type="text/javascript">
-            window.gnav_baseUrl = "https://www.esriuk.com";
-            window.gnav_jsonPath = "https://assets.esri.com/content/experience-fragments/distributor-sites/esriuk-com/en-gb/global-navigation-config/flyout.25.json";
-        </script>
-        <script src="//webapps-cdn.esri.com/CDN/components/global-nav/js/gn.js"></script> -->
     </head>
 
     <body>
@@ -120,7 +113,7 @@
                     <h1>${config.title}</h1>
                     ${config.description ? `<p>${config.description}</p>` : ""}
                     ${config.data.projects.categories[0].anchor !== "repositories" ? `<a class="btn gh-banner-cta" href="${config.url}">View repositories <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" class="svg-icon"><path d="M7 4h5l12 12-12 12H7l12-12L7 4z"/></svg></a>` : ""}
-                    `,);
+                    `);
                     </script>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" class="code-icon">
                         <defs>
@@ -349,7 +342,7 @@
                             <span class="visually-hidden">Search ${config.organisation}'s GitHub repositories</span>
                         </button>
                     </form>
-                    `,);
+                    `);
                     </script>
                 </div>
 
