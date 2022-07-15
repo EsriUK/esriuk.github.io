@@ -14,7 +14,7 @@ Page content is configured using a JavaScript object set with [`config.js`](http
 
 The sections will alternate between a dark and light theme. The sections will include a number of cards representing repositories up to the configured `maxRepos` which are loaded from the [GitHub Search API](https://docs.github.com/en/rest/search#about-the-search-api). Should the API's rate limit be reached, these cards will be omitted.
 
-The page is highly tolerant of faults in the configuration and will accommodate missing fields either by omitting content or falling back to default values (in the case of the page title and GitHub organisation). Should no `config.js` file be present or an error be present within it, the page will default to showing a single section entitled ["Repositories"](/error-in-config.png) containing up to eight recently updated repositories.
+The page is highly tolerant of faults in the configuration and will accommodate missing fields either by omitting content or falling back to default values (in the case of the page title and GitHub organisation). Should no `config.js` file be present or an error be present within it, the page will default to showing a single section entitled ["Repositories"](https://raw.githubusercontent.com/EsriUK/esriuk.github.io/main/assets/img/error-in-config.png) containing up to eight recently updated repositories.
 
 The sticky anchor navigation will be present when the viewport is wide enough and when more than one section is present. Sections will be included provided that they are configured with both a title and anchor (id).
 
