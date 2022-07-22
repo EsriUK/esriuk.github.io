@@ -73,6 +73,35 @@
         <meta property="og:url" content="https://${config.org}.github.io" />
         `, "");
         </script>
+        
+        <!-- Adobe Analytics -->
+        <script id="template">
+            var analyticsUrl = `https://esrimarketing.d1.sc.omtrdc.net/b/ss/esriukglobalext/1/s${Math.ceil(Math.random() * parseInt('9'.repeat(9)))}?`;
+            var analyticsParameters = [
+                `AQB=1`,
+                `g=${window.location.href}`,
+                `${document.referrer ? `r=${document.referrer}` : ""}`,
+                `pageName=${config.org}.github.io`,
+                `server=${window.location.hostname}`,
+                `v1=${config.org} github`,
+                `v2=${window.location.href}`,
+                `v6=${window.location.hostname}`,
+                `v10=en`,
+                `v48=${config.org} github io`,
+                `h1=,,,`, `c1=D=v6`, `c2=D=v7`, `c3=D=v8`, `c4=D=v9`, `c5=D=v4`, `c14=D=v2`, `c19=D=v83`, `c50=D=v40`,
+                `AQE=1`,
+            ];
+            analyticsParameters.forEach(function(p, i, a) {
+                if (p == '') { analyticsParameters.splice(i, 1); return; }
+                p = p.split(/=(.*)/s);
+                a[i] = p[0] + '=' + encodeURIComponent(p[1]);
+            });
+            analyticsUrl + analyticsParameters.join("&");
+
+            template(`
+            <img src="${analyticsUrl + analyticsParameters.join('&')}"/>
+            `);
+        </script>
 
         <!-- CSS -->
         <link rel="stylesheet" href="https://webapps-cdn.esri.com/CDN/jslibs/calcite/1.0.0-rc.9/css/calcite-web.min.css">
